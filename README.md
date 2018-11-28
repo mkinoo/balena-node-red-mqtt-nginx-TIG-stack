@@ -34,6 +34,13 @@ Don't know your balena username? Login to the balena.io website, open up your ac
 
 ![build finished successful](./build%20finished%20successful.png)
 
+You can now followup the deployment via the balena cloud. 
+Go to https://dashboard.balena-cloud.com/apps
+Open your application, next you'll see the devices for the application.
+![Balena Application Dashboard](./BalenaApplicationDashboard.PNG)
+Click on the device name, and you'll see the device dashboard with the progress of the container deployment.
+![Balena Device Dashboard](./BalenaDeviceDashboard.PNG)
+
 ## 3. System resource monitoring using the TIG Stack (Telegraf, Influxdb & Grafana)
 The system resource monitoring is realized by the TIG stack and happens as follows:
 1. The [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) container collects the system resource metrics (memory, CPU, disk, network, ...) of the raspberry pi device and sends them to 
