@@ -72,7 +72,7 @@ The application consists of 2 [Node-RED](https://nodered.org/) containers:
 1. **node-red**: its editor is accessble through Host OS port and path : `<Host OS>:1880/node-red/`
 2. **node-red-test** : its editor is accessble through Host OS port and path : `<Host OS>:1882/node-red-test/`
 
-Note that both Node-RED editors are protected by a user name and a hashed password that must be set throught the environment variables `USERNAME` and  `PASSWORD`. The [Node-RED security page](https://nodered.org/docs/security) describes how a password hash can be generated.  You can set these environment variables using your [Balena dashboard](https://dashboard.balena-cloud.com) either under:
+Note that both Node-RED editors are protected by a user name and a **hashed** password that must be set through the environment variables `USERNAME` and  `PASSWORD`. The [Node-RED security page](https://nodered.org/docs/security) describes how a password hash can be generated.  You can set these environment variables using your [Balena dashboard](https://dashboard.balena-cloud.com) either under:
 - *Application Environment Variables (E(X))* - this implies that both Node-RED instances will have the same username and password.
 - *Service Variables (S(X))*
 
@@ -84,12 +84,14 @@ This application consist of 2 [Mosquitto MQTT-brokers](https://mosquitto.org/):
 2. **mqtt-test** which is listening to Host OS port 1884
 
 ## 7. Setup of the USB memory Stick for Influxdb
-The *influxdb* container is configured so that its data will be stored on a USB memory stick connected to the raspberry that has label `influxdb` and that is formatted in the `ext4` format as is specified in the influxdb Dockerfile.
-The script `my_entrypoint.sh` has the additional instructions to mount this USB memory stick inside the influxdb container.
+The data of the influxdb will be stored in the mount location `\mnt\influxdb`.
+The *influxdb* container is configured (see Dockerfile and my_entrypoint.sh) so that a USB drive (e.g. a USB memory stick) with label `influxdb` will be mounted to this mount location.  It is currently also expecting (see Dockerfile) that this USB drive is formatted in `ext4` format.
+
+If no USB drive (or memory stick) with label `influxdb` is connected to the raspberry pi then the named volume `influxdb-data` will be mounted to this location as is specified in the `docker-compose.yml` file.
 
 Notes
 1. the current *Balena* version doesn't yet support the definition of a volume for such a mounted drive in the docker compose yaml file therefore this is handled through the influxdb container setup as described here above.
-2. It is not possible to mount the same USB drive also in telegraf container (I have tried that) and consequently telegraf it is not able to report the `disk` metrics for this USB drive.
+2. It is not possible to mount the same USB drive also in telegraf container (I have tried that) and consequently telegraf is not able to report the `disk` metrics for this USB drive.
 
 ## 8. Internet access via Balena's public URL and Nginx.
 The [nginx](http://nginx.org/en/docs/) container has been configured so that when you enable the Balena public device URL that you can access the following applications over the internet:
