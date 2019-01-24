@@ -53,7 +53,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "fill": 1,
           "id": 1,
           "legend": {
@@ -158,7 +158,7 @@
             "": "#E0752D"
           },
           "bars": false,
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "fill": 1,
           "id": 4,
           "legend": {
@@ -279,7 +279,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "decimals": 1,
           "format": "percent",
           "gauge": {
@@ -387,7 +387,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "decimals": 1,
           "format": "celsius",
           "gauge": {
@@ -495,7 +495,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "decimals": 1,
           "format": "ppm",
           "gauge": {
@@ -603,7 +603,7 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "decimals": 1,
           "format": "ppm",
           "gauge": {
@@ -719,7 +719,7 @@
             "": "#70DBED"
           },
           "bars": false,
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "fill": 1,
           "id": 5,
           "legend": {
@@ -829,7 +829,7 @@
             "": "#E24D42"
           },
           "bars": false,
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "fill": 1,
           "id": 6,
           "legend": {
@@ -949,7 +949,7 @@
         {
           "aliasColors": {},
           "bars": false,
-          "datasource": "${DS_LUFT}",
+          "datasource": "luftdaten",
           "fill": 1,
           "id": 7,
           "legend": {
