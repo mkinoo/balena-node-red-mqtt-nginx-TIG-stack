@@ -24,7 +24,7 @@
     },
     {
       "type": "datasource",
-      "id": "luftdaten",
+      "id": "influxdb",
       "name": "InfluxDB",
       "version": "1.0.0"
     },

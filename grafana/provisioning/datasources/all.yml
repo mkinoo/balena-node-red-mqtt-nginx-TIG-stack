@@ -17,7 +17,6 @@ datasources:
   # is_default: true
   version: 1
   editable: true
-datasources:
 - name: 'luftdaten'
   type: 'influxdb'
   access: 'proxy'
