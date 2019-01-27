@@ -883,6 +883,7 @@
       "steppedLine": false,
       "targets": [
         {
+          "$$hashKey": "object:161",
           "alias": "$tag_loadDescr",
           "dsType": "influxdb",
           "groupBy": [
@@ -900,6 +901,7 @@
             }
           ],
           "hide": false,
+          "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT last(\"temperature\") FROM \"feinstaub\" WHERE $timeFilter GROUP BY time($interval), \"loadDescr\" fill(null)",
           "rawQuery": true,
@@ -941,14 +943,17 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:208",
+          "decimals": null,
           "format": "celsius",
           "label": "",
           "logBase": 1,
-          "max": "25",
-          "min": "18",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
+          "$$hashKey": "object:209",
           "format": "celsius",
           "label": null,
           "logBase": 1,
