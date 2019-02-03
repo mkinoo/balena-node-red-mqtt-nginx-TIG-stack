@@ -47,6 +47,14 @@ The system resource monitoring is realized by the TIG stack and happens as follo
 2. the [Influxdb](https://www.influxdata.com/) container that will store them in the influx database.  
 3. The [Grafana](https://grafana.com/) container has a dashboard (see screenshot below) showing these system metrics that it has retrieved from the influxdb.
 
+## 3.1 Telegraf
+The table below specifies the environment variables that can be set in the Balena Device Service Variables panel for the Telegraf Service.  Note that the `Default Value` is defined in `docker-compose.yml`
+
+| Name                     | Default Value  |  Description                                    |
+|------------------------- | -------------- |-------------------------------------------------|
+| **interval**             |    `60s`       | Frequency at which metrics are collected        |
+| **flush_interval**       |    `60s`       | Flushing interval (should not set < `interval`) |
+
 ## 4. Grafana
 The [Grafana](https://grafana.com/) user interface can be accessed at port 3000 of the host OS.
 The login and password is `admin`.
@@ -64,7 +72,7 @@ If you want to add a new Grafana dashboard then this can be done through followi
 1. Create the new dashboard using the Grafana UI.
 2. From the settings menu in Grafana UI select `View JSON` and copy the complete json file (**don't use the grafana UI `export` feature** as this will template the datasource and will not work due to that).
 3. Save the json contents you have copied in previous step into a new file in folder `grafana\dashboards` with extension .json  (e.g. `mydashboard-02.json`)
-4. Substitute the ID number you can fiInfluxDB system metrics dashboard]nd in that file just after field `"graphTooltip"` by `null`.  E.g. ` "id": 1,` should be changed into ` "id": null,`
+4. Substitute the ID number you can find in that file just after field `"graphTooltip"` by `null`.  E.g. ` "id": 1,` should be changed into ` "id": null,`
 5. Commit your changes in git and push them to your balena git remote endpoint (`git push balena master`)
 
 ## 5. Node-RED
@@ -76,7 +84,9 @@ Note that both Node-RED editors are protected by a user name and a **hashed** pa
 - *Application Environment Variables (E(X))* - this implies that both Node-RED instances will have the same username and password.
 - *Service Variables (S(X))*
 
-Note also that a `node-red-data` and `node-red-test-data` are 2 named volumed used for the `\data` folder of respectively *node-red* and *node-red-test*.  Take care that the `settings.js` is only copied during the initial deployment of the application.  So take care that when the application is redeployed e.g. due to changes, then the `settings.js` is not recopied to the `\data` folder. (see also [How to copy a file to a named volume?](https://forums.balena.io/t/how-to-copy-a-file-to-a-named-volume/4331))
+*Notes:*
+1. `node-red-data` and `node-red-test-data` are 2 named volumed used for the `\data` folder of respectively *node-red* and *node-red-test*.  Take care that the `settings.js` is only copied during the initial deployment of the application.  So when the application is redeployed e.g. due to changes, then the `settings.js` is not recopied to the `\data` folder. (see also [How to copy a file to a named volume?](https://forums.balena.io/t/how-to-copy-a-file-to-a-named-volume/4331))
+2. In order to assure that nodes installed through `npm install` are not lost after a restart of the container, you must assure that they are installed in the `\data` directory. So you must first do a `cd \data` and then execute the `npm install ....` command. This will assure that the node is correctly installed under folder `\data\node_modules\` and that it will persist after restarts of the container.
 
 ## 6. MQTT broker
 This application consist of 2 [Mosquitto MQTT-brokers](https://mosquitto.org/):
