@@ -18,7 +18,7 @@ So, this application consists of the following 8 docker containers (= TIG stack 
 1. [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) - agent for collecting and reporting metrics and events
 2. [Influxdb](https://www.influxdata.com/) - Time Series Database
 3. [Grafana](https://grafana.com/) - create, explore and share dashboards
-4. 2x [Node-RED](https://nodered.org/) - flow based programming for the Internet of Things (accessible through path `/nodered` )
+4. 2x [Node-RED](https://nodered.org/) - flow based programming for the Internet of Things (accessible through path `/node-red` )
 5. 2x [MQTT-broker](https://mosquitto.org/) - lightweight message broker
 4. [nginx](http://nginx.org/en/docs/) - is open source software for web serving, reverse proxying, caching, load balancing,....
 
