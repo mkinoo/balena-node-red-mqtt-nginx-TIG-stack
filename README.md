@@ -75,6 +75,10 @@ If you want to add a new Grafana dashboard then this can be done through followi
 4. Substitute the ID number you can find in that file just after field `"graphTooltip"` by `null`.  E.g. ` "id": 1,` should be changed into ` "id": null,`
 5. Commit your changes in git and push them to your balena git remote endpoint (`git push balena master`)
 
+## 4.2 Overriding settings & Security
+Do you want another admin password? Just override the "admin_password" setting by setting an environment variable called "GF_SECURITY_ADMIN_PASSWORD" for the grafana service.
+You can override any setting using environment variables formatted like GF_<SectionName>_<KeyName>.
+See also: http://docs.grafana.org/v3.1/installation/configuration/
 ## 5. Node-RED
 The application consists of 2 [Node-RED](https://nodered.org/) containers: 
 1. **node-red**: its editor is accessble through Host OS port and path : `<Host OS>:1880/node-red/`
